@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p class="span sas-header">SAS Visual Analytics - Explore and Visualize</p>
+    <div class="row sas-options-top">
+        <div class="col-md-2 text-left"><p><i class="bi bi-pencil"></i> Editing</p></div>
+        <div class="col-md-8 text-center"><p class="font-weight-bold">Internet Usage Census (North Carolina)</p></div>
+        <div class="col-md-2 text-right">
+            <i class="bi bi-arrow-counterclockwise"></i>
+            <i class="bi bi-arrow-clockwise"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                <path d="M11 2H9v3h2z"/>
+                <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+            </svg>
+            <i class="bi bi-three-dots-vertical"></i>
+            <i class="bi bi-person-circle"></i>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+            <ul class="align-list-left">
+                <li><i class="bi bi-three-dots"></i></li>
+                <li><i class="bi bi-database"></i></li>
+                <li><i class="bi bi-graph-up"></i></li>
+                <li><i class="bi bi-lightbulb"></i></li>
+            </ul>
+        </div>
+        <div class="col-md-10 charts-here">
+
+            <!-- Bootstrap Documentation for Tabs -->
+            <nav>
+                <div class="nav nav-tabs nav-tabs-edit" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-tab-1" data-bs-toggle="tab" data-bs-target="#nav-tab-1-content" type="button" role="tab" aria-controls="nav-tab-1" aria-selected="true">Internet Concerns According to County and Age</button>
+                <button class="nav-link" id="nav-tab-2" data-bs-toggle="tab" data-bs-target="#nav-tab-2-content" type="button" role="tab" aria-controls="nav-tab-2" aria-selected="false">Internet Usage per Device</button>
+                <button class="nav-link" id="nav-tab-3" data-bs-toggle="tab" data-bs-target="#nav-tab-3-content" type="button" role="tab" aria-controls="nav-tab-3" aria-selected="false">Internet Usage Activities</button>
+                <button class="nav-link" id="nav-tab-4" data-bs-toggle="tab" data-bs-target="#nav-tab-4-content" type="button" role="tab" aria-controls="nav-tab-4" aria-selected="false">Chart 4</button>
+                <button class="nav-link" id="nav-tab-data" data-bs-toggle="tab" data-bs-target="#nav-tab-data-content" type="button" role="tab" aria-controls="nav-tab-data" aria-selected="false">Search Internet Data Table</button>
+                <button class="nav-link" id="nav-tab-x" data-bs-toggle="tab" data-bs-target="#nav-tab-x-content" type="button" role="tab" aria-controls="nav-tab-x" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/></svg></button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-tab-1-content" role="tabpanel" aria-labelledby="nav-tab-1">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">Internet Concerns According to County and Age</h1>
+                        <div class="row">
+                            <div class="col-md-8 col-xl-8">
+                                <canvas id="chart1"></canvas>
+                                <h4 class="chart1-labels-h">County Code Key</h4>
+                                <table class="chart1-labels-p table table-striped">
+                                    <thead><tr>
+                                        <th>Statistical Code</th>
+                                        <th>County Name</th>
+                                        <th>Largest City</th>
+                                    </tr></thead>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>Alamance</td>
+                                        <td>Burlington, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>021</td>
+                                        <td>Buncombe</td>
+                                        <td>Asheville, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>057</td>
+                                        <td>Davidson</td>
+                                        <td>Thomasville, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>067</td>
+                                        <td>Forsyth</td>
+                                        <td>Winston-Salem, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>119</td>
+                                        <td>Mecklenburg</td>
+                                        <td>Charlotte, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>133</td>
+                                        <td>Onslow</td>
+                                        <td>Jacksonville, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>147</td>
+                                        <td>Pitt</td>
+                                        <td>Greenville, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>155</td>
+                                        <td>Robeson</td>
+                                        <td>Lumberton, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>159</td>
+                                        <td>Rowan</td>
+                                        <td>Salisbury, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>179</td>
+                                        <td>Union</td>
+                                        <td>Indian Trail, NC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>191</td>
+                                        <td>Wayne</td>
+                                        <td>Goldsboro, NC</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-4">
+                                <h3 class="font-weight-bold">Samples</h3>
+                                <h2 class="big-stats font-weight-bold">2245</h2>
+                                <h3 class="font-weight-bold">Part-Time Workers</h3>
+                                <h2 class="big-stats font-weight-bold">1511</h2>
+                                <h3 class="font-weight-bold">Full-Time Workers</h3>
+                                <h2 class="big-stats font-weight-bold">734</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
+                                <p class="chart-desc">Text text hehehe yay!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-tab-2-content" role="tabpanel" aria-labelledby="nav-tab-2">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">Internet Usage per Device</h1>
+                        <div class="row">
+                            <div class="col-md-8 col-xl-8">
+                                <canvas id="chart2"></canvas>
+                            </div>
+                            <div class="col-md-4">
+                                <h3 class="font-weight-bold">Internet Access by Laptop</h3>
+                                <h2 class="big-stats font-weight-bold">1378 (61%)</h2>
+                                <h3 class="font-weight-bold">Internet Access by Phone</h3>
+                                <h2 class="big-stats font-weight-bold">1515 (67%)</h2>
+                                <h3 class="font-weight-bold">Income Divisions</h3>
+                                <h2 class="big-stats font-weight-bold">16</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
+                                <p class="chart-desc">Text text hehehe yay!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-tab-3-content" role="tabpanel" aria-labelledby="nav-tab-3">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">Internet Usage Activities</h1>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <canvas id="chart3"></canvas>
+                            </div>
+                            <div class="col-md-4">
+                                <h3 class="font-weight-bold">Social media usage</h3>
+                                <h2 class="big-stats font-weight-bold">74.57%</h2>
+                                <h3 class="font-weight-bold">Selling online usage</h3>
+                                <h2 class="big-stats font-weight-bold">6.49%</h2>
+                                <h3 class="font-weight-bold">Online shopping usage</h3>
+                                <h2 class="big-stats font-weight-bold">68.477%</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
+                                <p class="chart-desc">Text text hehehe yay!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-tab-4-content" role="tabpanel" aria-labelledby="nav-tab-4">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">Chart 4</h1>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <!-- https://www.sgratzl.com/chartjs-chart-geo/getting-started.html -->
+                                <div id="chart4"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <h3 class="font-weight-bold">Samples</h3>
+                                <h2 class="big-stats font-weight-bold">2245</h2>
+                                <h3 class="font-weight-bold">Part-Time Workers</h3>
+                                <h2 class="big-stats font-weight-bold">1511</h2>
+                                <h3 class="font-weight-bold">Full-Time Workers</h3>
+                                <h2 class="big-stats font-weight-bold">734</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
+                                <p class="chart-desc">Text text hehehe yay!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-tab-data-content" role="tabpanel" aria-labelledby="nav-tab-data">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">Search Data Table</h1>
+                        <p>Using datatables.net, the Internet census data for North Carolina is now searchable!</p>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <table id="internetTable" class="display table-spacing">
+                                    <thead>
+                                        <tr>
+                                            <th>Month of Interview</th>
+                                            <th>Year of Interview</th>
+                                            <th>Survey Outcome</th>
+                                            <th>Housing Payment</th>
+                                            <th>Housing Type</th>
+                                            <th>Present Telephone</th>
+                                            <th>Family Income</th>
+                                            <th>Household Members</th>
+                                            <th>Household Members Type</th>
+                                            <th>Number of Households in Sample</th>
+                                            <th>Interview Type</th>
+                                            <th>Geo Region</th>
+                                            <th>Geo Division</th>
+                                            <th>State</th>
+                                            <th>CBSA</th>
+                                            <th>County</th>
+                                            <th>Metropolitan Status</th>
+                                            <th>Metropolitan CBSA Population Size</th>
+                                            <th>Age</th>
+                                            <th>Sex</th>
+                                            <th>Highest Level of Education</th>
+                                            <th>Race</th>
+                                            <th>Citizenship Status</th>
+                                            <th>Employment Status</th>
+                                            <th>Retired Y/N</th>
+                                            <th>Disabled Y/N</th>
+                                            <th>Weekly Work Hours</th>
+                                            <th>Full Time</th>
+                                            <th>Worker Class</th>
+                                            <th>Worker Class 2</th>
+                                            <th>Private or Government</th>
+                                            <th>Hourly Job Y/N</th>
+                                            <th>Enrolled in School</th>
+                                            <th>School Level</th>
+                                            <th>In School Y/N</th>
+                                            <th>PWF MWGT</th>
+                                            <th>PWL GWGT</th>
+                                            <th>PWOR WGGT</th>
+                                            <th>Final Demographic Weight</th>
+                                            <th>Laptop Usage</th>
+                                            <th>Desktop Usage</th>
+                                            <th>Tablet Usage</th>
+                                            <th>Cell Phone Usage</th>
+                                            <th>Smart Watch</th>
+                                            <th>Smart TV</th>
+                                            <th>Device Connect Well to Internet</th>
+                                            <th>Unable to Use Internet in Last 6 Months</th>
+                                            <th>Internet Usage Location (Work)</th>
+                                            <th>Internet Usage Location (School)</th>
+                                            <th>Internet Usage Location (Cafe)</th>
+                                            <th>Internet Usage Location (Travel)</th>
+                                            <th>Internet Usage Location (Public)</th>
+                                            <th>Internet Usage Location (Home)</th>
+                                            <th>Phone Data Plan</th>
+                                            <th>Internet Access By 1</th>
+                                            <th>Internet Access By 2</th>
+                                            <th>Internet Access By 3</th>
+                                            <th>Internet Connection Meets Needs</th>
+                                            <th>Difficulty Paying for Internet</th>
+                                            <th>Email Online</th>
+                                            <th>Texting Messaging Online</th>
+                                            <th>Social Media Online</th>
+                                            <th>Gaming Online</th>
+                                            <th>Conferences Call Online</th>
+                                            <th>Watch Video Online</th>
+                                            <th>Listen to Audio Online</th>
+                                            <th>Content Creation Online</th>
+                                            <th>Work from Home</th>
+                                            <th>Job Search Online</th>
+                                            <th>Job Training Online</th>
+                                            <th>Government Services Online</th>
+                                            <th>Requesting Services Online</th>
+                                            <th>Selling Services Online</th>
+                                            <th>Shopping Online</th>
+                                            <th>Selling Items Online</th>
+                                            <th>Payment Banking Online</th>
+                                            <th>Digital Voice Assistant Online</th>
+                                            <th>IOT Online</th>
+                                            <th>Health Records Online</th>
+                                            <th>Health Communication Online</th>
+                                            <th>Health Research Online</th>
+                                            <th>Electronic Health Monitoring Online</th>
+                                            <th>Online Security Concern 1</th>
+                                            <th>Online Security Concern 2</th>
+                                            <th>Online Security Concern 3</th>
+                                            <th>Online Security Concern 4</th>
+                                            <th>Online Security Concern 5</th>
+                                            <th>Online Concerns 1</th>
+                                            <th>Online Concerns 2</th>
+                                            <th>Online Concerns 3</th>
+                                            <th>Online Concerns 4</th>
+                                            <th>Online Concerns 5</th>
+                                            <th>Online Concerns 6</th>
+                                            <th>Online Concerns 8</th>
+                                            <th>Online Security Breach</th>
+                                            <th>Online At Home</th>
+                                            <th>Not Online Y/N (1)</th>
+                                            <th>Not Online Y/N (2)</th>
+                                            <th>Not Online Y/N (3)</th>
+                                            <th>Not Online Y/N (4)</th>
+                                            <th>Not Online Y/N (5)</th>
+                                            <th>Not Online Y/N (6)</th>
+                                            <th>Not Online Y/N (7)</th>
+                                            <th>Not Online Y/N (8)</th>
+                                            <th>Not Online Y/N (9)</th>
+                                            <th>Not Online Y/N (10)</th>
+                                            <th>Why Not Online</th>
+                                            <th>Monthly Internet Price</th>
+                                            <th>Satellite TV Subscription Current</th>
+                                            <th>Satellite TV Subscription</th>
+                                            <th>Weighting PWP RM WGGT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data will be populated by DataTables -->
+                                    </tbody>
+                                </table>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#internetTable').DataTable({
+                                            "ajax": {
+                                                "url": "js/NC_Internet_Completed.json",  // Path to your JSON file
+                                                "dataSrc": ""  // Default, if your JSON file is an array of objects
+                                            },
+                                            "scrollX": true,
+                                            "paging": true,
+                                            "searching": true,
+                                            "ordering": true,  // Path to the JSON file
+                                            "columns": [
+                                                { "data": "monthOfInterview" },
+                                                { "data": "yearOfInterview" },
+                                                { "data": "surveyOutcome" },
+                                                { "data": "housingPayment" },
+                                                { "data": "housingType" },
+                                                { "data": "presentTelephone" },
+                                                { "data": "familyIncome" },
+                                                { "data": "householdMembers" },
+                                                { "data": "householdMembersType" },
+                                                { "data": "numHouseholdsInSample" },
+                                                { "data": "interviewType" },
+                                                { "data": "geoRegion" },
+                                                { "data": "geoDivision" },
+                                                { "data": "state" },
+                                                { "data": "CBSA" },
+                                                { "data": "county" },
+                                                { "data": "metropolitanStatus" },
+                                                { "data": "metropolitanCBSAPopulationSize" },
+                                                { "data": "Age" },
+                                                { "data": "Sex" },
+                                                { "data": "highestLevelOfEducation" },
+                                                { "data": "Race" },
+                                                { "data": "citizenshipStatus" },
+                                                { "data": "employmentStatus" },
+                                                { "data": "retiredYN" },
+                                                { "data": "disabledYN" },
+                                                { "data": "weeklyWorkHours" },
+                                                { "data": "fullTime" },
+                                                { "data": "workerClass" },
+                                                { "data": "workerClass2" },
+                                                { "data": "privateOrGovernment" },
+                                                { "data": "hourlyJobYN" },
+                                                { "data": "enrolledInSchool" },
+                                                { "data": "schoolLevel" },
+                                                { "data": "inSchoolYN" },
+                                                { "data": "pwfmwgt" },
+                                                { "data": "pwlgwgt" },
+                                                { "data": "pworwgt" },
+                                                { "data": "finalDemographicWeight" },
+                                                { "data": "laptopUsage" },
+                                                { "data": "desktopUsage" },
+                                                { "data": "tabletUsage" },
+                                                { "data": "cellPhoneUsage" },
+                                                { "data": "smartWatch" },
+                                                { "data": "smartTV" },
+                                                { "data": "deviceConnectWellToInternet" },
+                                                { "data": "unableToUseInternet6Mo" },
+                                                { "data": "internetUsageLocationWork" },
+                                                { "data": "internetUsageLocationSchool" },
+                                                { "data": "internetUsageLocationCafe" },
+                                                { "data": "internetUsageLocationTravel" },
+                                                { "data": "internetUsageLocationPublic" },
+                                                { "data": "internetUsageLocationHomeOther" },
+                                                { "data": "phoneDataPlan" },
+                                                { "data": "internetAccessBy1" },
+                                                { "data": "internetAccessBy2" },
+                                                { "data": "internetAccessBy3" },
+                                                { "data": "internetConnectionMeetsNeeds" },
+                                                { "data": "difficultyPayingForInternet" },
+                                                { "data": "emailOnline" },
+                                                { "data": "textingMessagingOnline" },
+                                                { "data": "socialMediaOnline" },
+                                                { "data": "gamingOnline" },
+                                                { "data": "conferencesCallOnline" },
+                                                { "data": "watchVideoOnline" },
+                                                { "data": "listenAudioOnline" },
+                                                { "data": "contentCreationOnline" },
+                                                { "data": "workFromHome" },
+                                                { "data": "jobSearchOnline" },
+                                                { "data": "jobTrainingOnline" },
+                                                { "data": "governmentServicesOnline" },
+                                                { "data": "requestingServicesOnline" },
+                                                { "data": "sellingServicesOnline" },
+                                                { "data": "shoppingOnline" },
+                                                { "data": "sellingItemsOnline" },
+                                                { "data": "paymentBankingOnline" },
+                                                { "data": "digitalVoiceAssistantOnline" },
+                                                { "data": "iotOnline" },
+                                                { "data": "healthRecordsOnline" },
+                                                { "data": "healthCommunicationOnline" },
+                                                { "data": "healthResearchOnline" },
+                                                { "data": "electronicHealthMonitoringOnline" },
+                                                { "data": "onlineSecurityConcern1" },
+                                                { "data": "onlineSecurityConcern2" },
+                                                { "data": "onlineSecurityConcern3" },
+                                                { "data": "onlineSecurityConcern4" },
+                                                { "data": "onlineSecurityConcern5" },
+                                                { "data": "onlineConcerns1" },
+                                                { "data": "onlineConcerns2" },
+                                                { "data": "onlineConcerns3" },
+                                                { "data": "onlineConcerns4" },
+                                                { "data": "onlineConcerns5" },
+                                                { "data": "onlineConcerns6" },
+                                                { "data": "onlineConcerns8" },
+                                                { "data": "onlineSecurityBreach" },
+                                                { "data": "onlineAtHome" },
+                                                { "data": "notOnlineYN1" },
+                                                { "data": "notOnlineYN2" },
+                                                { "data": "notOnlineYN3" },
+                                                { "data": "notOnlineYN4" },
+                                                { "data": "notOnlineYN5" },
+                                                { "data": "notOnlineYN6" },
+                                                { "data": "notOnlineYN7" },
+                                                { "data": "notOnlineYN8" },
+                                                { "data": "notOnlineYN9" },
+                                                { "data": "notOnlineYN10" },
+                                                { "data": "whyNotOnline" },
+                                                { "data": "monthlyInternetPrice" },
+                                                { "data": "satelliteTVSubscriptionCurrent" },
+                                                { "data": "satelliteTVSubscription" },
+                                                { "data": "weightingPwprmwgt" }
+                                            ],
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- https://datatables.net/examples/basic_init/zero_configuration.html -->
+             <br>
+             <br>
+
+        </div>
+        <div class="col-md-1">
+            <ul class="align-list-right">
+                <li><i class="bi bi-three-dots"></i></li>
+                <li><i class="bi bi-speedometer"></i></li>
+                <li><i class="bi bi-clipboard-data"></i></li>
+                <li><i class="bi bi-check2-square"></i></li>
+                <li><i class="bi bi-bounding-box"></i></li>
+                <li><i class="bi bi-funnel"></i></li>
+                <li><i class="bi bi-bar-chart"></i></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/chartjs-chart-geo@3.5.2/build/index.umd.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+// Chart 1
+        const chart1 = document.getElementById('chart1');
+        const chart2 = document.getElementById('chart2');
+        const chart3 = document.getElementById('chart3');
+
+        fetch('js/NC_Internet_Completed.json') // Adjust the path as needed
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(jsonData => {
+            const datasets = [];
+
+            const concernData2 = jsonData.filter(item => item.onlineSecurityConcern1 == 1)
+            .map(item => ({
+                x: item.county,             // Ensure county exists
+                y: item.Age ? item.Age : NaN  // Check for the 'Age' field (case-sensitive)
+            }));
+
+        // Log the concern data to ensure it's being filtered correctly
+        /*console.log("Filtered and mapped concernData:", concernData2);*/
+
+    // Loop through Online Security Concerns (1-5)
+    for (let i = 1; i <= 5; i++) {
+        const concernKey = `onlineSecurityConcern${i}`;
+        const concernData = jsonData.filter(item => Number(item[concernKey]) === 1) // Make sure we cast to number
+            .map(item => ({
+                x: item.county,  // Use county as x-axis value
+                y: item.Age      // Use age as y-axis value
+            }));
+
+    /*console.log(`Concern ${i} data:`, concernData);  // Log data to debug*/
+
+    if (concernData2.length > 0) {
+        datasets.push({
+            label: `Security Concern ${i}`,
+            data: concernData,  // Include only items with "1" for this concern
+            backgroundColor: `rgba(${i * 40}, ${i * 50}, 255, 0.6)`, // Unique color for each concern
+            borderColor: `rgba(${i * 40}, ${i * 50}, 255, 1)`,
+            borderWidth: 1
+        });
+    } else {
+        console.log(`No data for Security Concern ${i}`);
+    }
+}
+
+// Loop through Online Concerns (1-6)
+for (let i = 1; i <= 6; i++) {
+    const concernKey = `onlineConcerns${i}`;
+    const concernData = jsonData.filter(item => Number(item[concernKey]) === 1) // Ensure comparison with numbers
+        .map(item => ({
+            x: item.county,  // Use county as x-axis value
+            y: item.Age      // Use age as y-axis value
+        }));
+
+    /*console.log(`Online Concern ${i} data:`, concernData);*/  // Log data to debug
+
+    if (concernData.length > 0) {
+        datasets.push({
+            label: `Online Concern ${i}`,
+            data: concernData,  // Include only items with "1" for this concern
+            backgroundColor: `rgba(${i * 50}, ${i * 30}, 150, 0.6)`, // Unique color for each concern
+            borderColor: `rgba(${i * 50}, ${i * 30}, 150, 1)`,
+            borderWidth: 1
+        });
+    } else {
+        console.log(`No data for Online Concern ${i}`);
+    }
+}
+
+const concernData = jsonData.filter(item => item.onlineSecurityConcern1 == 1)  // Just check one category
+    .map(item => ({
+        x: item.county,
+        y: item.Age
+    }));
+
+/*console.log(concernData);*/  // Check if we get data points for the concern
+
+// Define the mapping of county numbers to county names
+const countyLabels = {
+    0: 'Other',
+    1: 'Alamance',
+    21: 'Buncombe',
+    57: 'Davidson',
+    67: 'Forsyth',
+    119: 'Mecklenburg',
+    133: 'Onslow',
+    147: 'Pitt',
+    155: 'Robeson*',
+    159: 'Rowan',
+    179: 'Union',
+    191: 'Wayne'
+};
+
+// Assuming `jsonData` is the array of data points, e.g., from the JSON
+const labels2 = jsonData.map(item => {
+    // Get the label from the countyLabels object if it exists
+    const countyLabel = countyLabels[item.county];
+    // If no custom label exists, use the default label
+    return countyLabel || `Income Group ${item.county}`;
+});
+
+/*console.log(labels2);*/  // Check the labels array
+
+// Now initialize the Chart.js chart with the datasets
+new Chart(chart1, {
+    type: 'scatter', // Scatter plot
+    data: {
+        datasets: datasets // Use the datasets array with multiple concerns
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+        },
+        scales: {
+            x: {
+                type: 'linear',  // X-axis is linear scale
+                labels: labels2,
+                position: 'bottom',
+                title: {
+                    display: true,
+                    text: 'County'  // x-axis title
+                },
+                ticks: {
+                    stepSize: 1,
+                }
+            },
+            y: {
+                type: 'linear',  // Y-axis is linear scale (for age values)
+                position: 'left',
+                title: {
+                    display: true,
+                    text: 'Age'  // y-axis title
+                }
+            }
+        }
+    }
+});
+
+// CHART 2
+    // Step 1: Group data by familyIncome
+    const incomeGroups = jsonData.reduce((acc, item) => {
+        if (!acc[item.familyIncome]) {
+            acc[item.familyIncome] = [];
+        }
+        acc[item.familyIncome].push(item);
+        return acc;
+    }, {});
+
+    /*console.log('Income Groups:', incomeGroups);*/ // Check if groups are created correctly
+
+    // Step 2: Count how many times "1" appears for each device per income group
+    const countOnesByIncome = Object.keys(incomeGroups).map(familyIncome => {
+        const group = incomeGroups[familyIncome];
+        
+        // Check if we have data for this income group
+        /*console.log(`Processing group for familyIncome ${familyIncome}:`, group);*/
+
+        // Count how many times "1" appears for each device type in the group
+        const countLaptopOnes = group.filter(item => item.laptopUsage === 1).length;
+        const countDesktopOnes = group.filter(item => item.desktopUsage === 1).length;
+        const countTabletOnes = group.filter(item => item.tabletUsage === 1).length;
+        const countWatchOnes = group.filter(item => item.smartWatch === 1).length;
+        const countTVOnes = group.filter(item => item.smartTV === 1).length;
+        const countPhoneOnes = group.filter(item => item.phoneDataPlan === 1).length;
+
+        /*console.log(`Counts for familyIncome ${familyIncome}:`, {
+            countLaptopOnes,
+            countDesktopOnes,
+            countTabletOnes,
+            countWatchOnes,
+            countTVOnes, 
+            countPhoneOnes
+        });*/
+
+        return {
+            familyIncome: familyIncome,
+            countLaptopOnes: countLaptopOnes,
+            countDesktopOnes: countDesktopOnes,
+            countTabletOnes: countTabletOnes,
+            countWatchOnes: countWatchOnes,
+            countTVOnes: countTVOnes,
+            countPhoneOnes: countPhoneOnes
+        };
+    });
+
+    /*console.log('Count Ones by Income:', countOnesByIncome);*/ // Check if counts are calculated properly
+
+    // Step 3: Prepare labels and data for Chart.js
+    const incomeRangeMap = {
+        1: '$0 - 5000',
+        2: '$5000 - 7000',
+        3: '$7,500 TO 9,999',
+        4: '$10,000 TO 12,499',
+        5: '$12,500 TO 14,999',
+        6: '$15,000 TO 19,999',
+        7: '$20,000 TO 24,999',
+        8: '$25,000 TO 29,999',
+        9: '$30,000 TO 34,999',
+        10: '$35,000 TO 39,999',
+        11: '$40,000 TO 49,999',
+        12: '$50,000 TO 59,999',
+        13: '$60,000 TO 74,999',
+        14: '$75,000 TO 99,999',
+        15: '$100,000 TO 149,999',
+        16: '$150,000 OR MORE'
+    };
+
+    const labels = countOnesByIncome.map(item => {
+        const incomeRange = incomeRangeMap[item.familyIncome];
+        return incomeRange || `Income Group ${item.familyIncome}`;
+    });
+
+    // Data arrays for each device type (count of "1"s)
+    const laptopData = countOnesByIncome.map(item => item.countLaptopOnes);
+    const desktopData = countOnesByIncome.map(item => item.countDesktopOnes);
+    const tabletData = countOnesByIncome.map(item => item.countTabletOnes);
+    const watchData = countOnesByIncome.map(item => item.countWatchOnes);
+    const tvData = countOnesByIncome.map(item => item.countTVOnes);
+    const phoneData = countOnesByIncome.map(item => item.countPhoneOnes);
+
+    // Debugging: Log the data to check for correctness 
+    /*
+    console.log('Labels:', labels);
+    console.log('Laptop Data:', laptopData);
+    console.log('Desktop Data:', desktopData);
+    console.log('Tablet Data:', tabletData);
+    console.log('Watch Data:', watchData);
+    console.log('TV Data:', tvData);
+    console.log('Phone Data:', phoneData);*/
+
+    // Step 4: Initialize Chart.js with the data
+    const chart2 = document.getElementById('chart2').getContext('2d');
+    new Chart(chart2, {
+        type: 'bar',
+        data: {
+            labels: labels, // Income group labels
+            datasets: [
+                {
+                    label: 'Phone Usage',
+                    data: phoneData,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Laptop Usage',
+                    data: laptopData,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Desktop Usage',
+                    data: desktopData,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Tablet Usage',
+                    data: tabletData,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Smart Watch Usage',
+                    data: watchData,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Smart TV Usage',
+                    data: tvData,
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                display: true,
+                text: 'Internet access by device per family income'
+                },
+                legend: {
+                    position: 'top',
+                },
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Family Income per Year'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Num Responses'
+                    },
+                    beginAtZero: true,
+                    ticks: {
+                        min: 0
+                    }
+                }
+            }
+        }
+    });
+    
+    const targetColumns = [
+    "emailOnline", 
+    "textingMessagingOnline", 
+    "socialMediaOnline", 
+    "gamingOnline",
+    "conferencesCallOnline",
+    "watchVideoOnline",
+    "listenAudioOnline",
+    "contentCreationOnline",
+    "workFromHome",
+    "jobSearchOnline",
+    "jobTrainingOnline",
+    "governmentServicesOnline",
+    "requestingServicesOnline",
+    "sellingServicesOnline",
+    "shoppingOnline",
+    "sellingItemsOnline",
+    "paymentBankingOnline",
+    "digitalVoiceAssistantOnline",
+    "iotOnline",
+    "healthRecordsOnline",
+    "healthCommunicationOnline",
+    "healthResearchOnline",
+    "electronicHealthMonitoringOnline"
+];
+
+// Step 1: Count the "Yes" (1) and "No" (2) responses for each category
+const categoryCounts = targetColumns.reduce((acc, category) => {
+    acc[category] = { yes: 0, no: 0 }; // Initialize counts for each category
+    jsonData.forEach(item => {
+        if (item[category] === 1) {
+            acc[category].yes += 1; // Increment the "Yes" count
+        } else if (item[category] === 2) {
+            acc[category].no += 1; // Increment the "No" count
+        }
+    });
+    return acc;
+}, {});
+
+// Step 2: Prepare the data and normalize it to ensure each category is 100%
+const categories = Object.keys(categoryCounts);  // Labels for the X-axis (categories)
+const yesPercentages = categories.map(category => {
+    const yes = categoryCounts[category].yes;
+    const total = yes + categoryCounts[category].no; // Calculate total responses
+    return total > 0 ? (yes / total) * 100 : 0;  // Normalize Yes percentage (out of 100%)
+});
+
+const noPercentages = categories.map(category => {
+    const no = categoryCounts[category].no;
+    const total = no + categoryCounts[category].yes; // Calculate total responses
+    return total > 0 ? (no / total) * 100 : 0;  // Normalize No percentage (out of 100%)
+});
+
+// Step 3: Prepare data for Chart.js
+new Chart(chart3, {
+    type: 'bar',
+    data: {
+        labels: categories,  // X-axis labels (categories)
+        datasets: [{
+            label: 'Yes',
+            data: yesPercentages  // Y-axis data (normalized percentage of Yes responses)
+        },
+        {
+            label: 'No',
+            data: noPercentages  // Y-axis data (normalized percentage of No responses)
+        }]
+    },
+    options: {
+        indexAxis: 'y',  // Horizontal bars
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'How people are spending their time on the internet'
+            }
+        },
+        interaction: {
+            intersect: false
+        },
+        scales: {
+            x: {
+                stacked: true,  // Stack the "Yes" and "No" bars together
+                title: {
+                    display: true,
+                    text: 'Percentage of Total Responses'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    max: 100  // Set the max value to 100 so each row represents 100%
+                }
+            },
+            y: {
+                stacked: true,  // Stack the "Yes" and "No" bars together
+            }
+        }
+    }
+});
+
+})
+    .catch(error => console.error('Error loading the JSON data:', error));
+    </script>
+</body>
+</html>
