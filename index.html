@@ -1,3 +1,9 @@
+<!-- Site I was referencing/imitating for this assignment: https://www.sas.com/en_us/software/visual-analytics.html -->
+<!-- Bootstrap sidebars: https://getbootstrap.com/docs/5.0/examples/sidebars/# -->
+<!-- Bootstrap: https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp -->
+<!-- Datatables.net: https://datatables.net/examples/basic_init/zero_configuration.html -->
+<!-- Referenced ChatGPT to help me with JS syntax and debugging -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +12,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <title>Document</title>
+    <title>SAS Visual Analytics</title>
 </head>
 <body>
+    <!-- Headers -->
     <p class="span sas-header">SAS Visual Analytics - Explore and Visualize</p>
     <div class="row sas-options-top">
         <div class="col-md-2 text-left"><p><i class="bi bi-pencil"></i> Editing</p></div>
@@ -29,25 +37,45 @@
             <i class="bi bi-person-circle"></i>
         </div>
     </div>
-
+    <!-- Main Content -->
     <div class="row">
+        <!-- L Sidebar -->
         <div class="col-md-1">
-            <ul class="align-list-left">
-                <li><i class="bi bi-three-dots"></i></li>
-                <li><i class="bi bi-database"></i></li>
-                <li><i class="bi bi-graph-up"></i></li>
-                <li><i class="bi bi-lightbulb"></i></li>
-            </ul>
+            <div class="d-flex justify-content-start">
+                <!-- Sidebars modified from Bootstrap Documentation https://getbootstrap.com/docs/5.0/examples/sidebars/# -->
+                <div class="text-center d-none d-sm-block" style="width: 3rem; background-color: rgb(248 249 251);">
+                    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center sidebar" style="background-color: rgb(248 249 251);">
+                      <li class="border-bottom">
+                        <i class="bi bi-three-dots"></i>
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database" viewBox="0 0 16 16">
+                            <path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"/>
+                        </svg><br>Data
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-graph-up"></i><br>Objects
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-lightbulb"></i><br>Suggest
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-list-ul"></i><br>Outline
+                      </li>
+                    </ul>
+                  </div>
+            </div>
         </div>
-        <div class="col-md-10 charts-here">
-
+        <!-- L Sidebar END -->
+        <!-- CHARTS -->
+        <div class="col-sm-12 col-md-10 col-xl-10 charts-here">
             <!-- Bootstrap Documentation for Tabs -->
-            <nav>
-                <div class="nav nav-tabs nav-tabs-edit" id="nav-tab" role="tablist">
+            <nav style="background-color: (239, 243, 246)">
+                <div class="nav nav-tabs nav-tabs-edit" id="nav-tab" role="tablist" style="background-color: (239, 243, 246)">
                 <button class="nav-link active" id="nav-tab-1" data-bs-toggle="tab" data-bs-target="#nav-tab-1-content" type="button" role="tab" aria-controls="nav-tab-1" aria-selected="true">Internet Concerns According to County and Age</button>
                 <button class="nav-link" id="nav-tab-2" data-bs-toggle="tab" data-bs-target="#nav-tab-2-content" type="button" role="tab" aria-controls="nav-tab-2" aria-selected="false">Internet Usage per Device</button>
                 <button class="nav-link" id="nav-tab-3" data-bs-toggle="tab" data-bs-target="#nav-tab-3-content" type="button" role="tab" aria-controls="nav-tab-3" aria-selected="false">Internet Usage Activities</button>
-                <button class="nav-link" id="nav-tab-4" data-bs-toggle="tab" data-bs-target="#nav-tab-4-content" type="button" role="tab" aria-controls="nav-tab-4" aria-selected="false">Chart 4</button>
+                <button class="nav-link" id="nav-tab-4" data-bs-toggle="tab" data-bs-target="#nav-tab-4-content" type="button" role="tab" aria-controls="nav-tab-4" aria-selected="false">Internet Usage Locations</button>
                 <button class="nav-link" id="nav-tab-data" data-bs-toggle="tab" data-bs-target="#nav-tab-data-content" type="button" role="tab" aria-controls="nav-tab-data" aria-selected="false">Search Internet Data Table</button>
                 <button class="nav-link" id="nav-tab-x" data-bs-toggle="tab" data-bs-target="#nav-tab-x-content" type="button" role="tab" aria-controls="nav-tab-x" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/></svg></button>
@@ -59,7 +87,7 @@
                         <h1 class="font-weight-bold">Internet Concerns According to County and Age</h1>
                         <div class="row">
                             <div class="col-md-8 col-xl-8">
-                                <canvas id="chart1"></canvas>
+                                <canvas id="chart1" height="240px"></canvas>
                                 <h4 class="chart1-labels-h">County Code Key</h4>
                                 <table class="chart1-labels-p table table-striped">
                                     <thead><tr>
@@ -67,6 +95,11 @@
                                         <th>County Name</th>
                                         <th>Largest City</th>
                                     </tr></thead>
+                                    <tr>
+                                        <td>000</td>
+                                        <td>Other</td>
+                                        <td>in NC</td>
+                                    </tr>
                                     <tr>
                                         <td>001</td>
                                         <td>Alamance</td>
@@ -125,14 +158,18 @@
                                 </table>
                             </div>
                             <div class="col-md-4">
-                                <h3 class="font-weight-bold">Samples</h3>
-                                <h2 class="big-stats font-weight-bold">2245</h2>
-                                <h3 class="font-weight-bold">Part-Time Workers</h3>
-                                <h2 class="big-stats font-weight-bold">1511</h2>
-                                <h3 class="font-weight-bold">Full-Time Workers</h3>
-                                <h2 class="big-stats font-weight-bold">734</h2>
-                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
-                                <p class="chart-desc">Text text hehehe yay!</p>
+                                <h5 class="font-weight-bold">Individuals are concerned about...</h3>
+                                <h3 class="font-weight-bold">Identity Theft</h3>
+                                <h2 class="big-stats font-weight-bold">715 (32%)</h2>
+                                <h3 class="font-weight-bold">Credit or Banking Fraud</h3>
+                                <h2 class="big-stats font-weight-bold">516 (23%)</h2>
+                                <h3 class="font-weight-bold">Data Collection and Tracking</h3>
+                                <h2 class="big-stats font-weight-bold">329 (15%)</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does age and location influence internet concerns?</h6>
+                                <p class="chart-desc">Overall, the data seems to indicate that most online concerns are spread accross all ages and locations.
+                                    I divided all "Yes" responses (out of n=2245) by county and mapped them according to the age of the respondents. The most frequent concern 
+                                    for was Identity Theft, followed by Credit or Banking Fraud, then Data Collection and Tracking.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -151,8 +188,11 @@
                                 <h2 class="big-stats font-weight-bold">1515 (67%)</h2>
                                 <h3 class="font-weight-bold">Income Divisions</h3>
                                 <h2 class="big-stats font-weight-bold">16</h2>
-                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
-                                <p class="chart-desc">Text text hehehe yay!</p>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">How are users accessing the internet?</h6>
+                                <p class="chart-desc">According to the user responses, most access the internet via laptop or phone, with phone
+                                    being most users' primary method of accessing the internet. The data indicates that tablets and smart TVs 
+                                    are also growing in popularity.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -162,42 +202,56 @@
                         <h1 class="font-weight-bold">Internet Usage Activities</h1>
                         <div class="row">
                             <div class="col-md-8">
-                                <canvas id="chart3"></canvas>
+                                <canvas id="chart3" height="120%"></canvas>
                             </div>
                             <div class="col-md-4">
+                                <h3 class="font-weight-bold">Text online</h3>
+                                <h2 class="big-stats font-weight-bold">93.78%</h2>
                                 <h3 class="font-weight-bold">Social media usage</h3>
                                 <h2 class="big-stats font-weight-bold">74.57%</h2>
-                                <h3 class="font-weight-bold">Selling online usage</h3>
-                                <h2 class="big-stats font-weight-bold">6.49%</h2>
                                 <h3 class="font-weight-bold">Online shopping usage</h3>
                                 <h2 class="big-stats font-weight-bold">68.477%</h2>
-                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
-                                <p class="chart-desc">Text text hehehe yay!</p>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">How are people spending their time on the internet?</h6>
+                                <p class="chart-desc">Overall, most internet users seem to prioritize communication, shopping, and banking. Communication 
+                                    includes email, texting and social media. Interestingly, over 50% of respondents reported using the internet to access
+                                    online health records or watch videos online.
+                                </p>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-tab-4-content" role="tabpanel" aria-labelledby="nav-tab-4">
                     <div class="tab-content-charts">
-                        <h1 class="font-weight-bold">Chart 4</h1>
+                        <h1 class="font-weight-bold">Internet Usage Locations</h1>
                         <div class="row">
                             <div class="col-md-8">
-                                <!-- https://www.sgratzl.com/chartjs-chart-geo/getting-started.html -->
-                                <div id="chart4"></div>
+                                <canvas id="chart4" height="120%"></canvas>
                             </div>
                             <div class="col-md-4">
                                 <h3 class="font-weight-bold">Samples</h3>
                                 <h2 class="big-stats font-weight-bold">2245</h2>
-                                <h3 class="font-weight-bold">Part-Time Workers</h3>
-                                <h2 class="big-stats font-weight-bold">1511</h2>
-                                <h3 class="font-weight-bold">Full-Time Workers</h3>
-                                <h2 class="big-stats font-weight-bold">734</h2>
-                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Does location play a role in number of hours worked per week?</h6>
-                                <p class="chart-desc">Text text hehehe yay!</p>
+                                <h3 class="font-weight-bold">Use Internet When Traveling</h3>
+                                <h2 class="big-stats font-weight-bold">1217 (54%)</h2>
+                                <h3 class="font-weight-bold">Use Internet At Work</h3>
+                                <h2 class="big-stats font-weight-bold">915 (41%)</h2>
+                                <h6 class="font-weight-bold text-uppercase chart-desc-title">Where are users accessing the internet (other than home)?</h6>
+                                <p class="chart-desc">The data indicates that most users tend to access the internet while traveling or at work. However, 
+                                    a considerable number of individuals also access the internet at school or in cafes.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Datatables.net -->
+                <!-- https://datatables.net/examples/basic_init/zero_configuration.html -->
                 <div class="tab-pane fade" id="nav-tab-data-content" role="tabpanel" aria-labelledby="nav-tab-data">
                     <div class="tab-content-charts">
                         <h1 class="font-weight-bold">Search Data Table</h1>
@@ -325,16 +379,17 @@
                                     </tbody>
                                 </table>
                                 <script>
+                                    // Referenced ChatGPT for JS syntax to correctly reference json file
                                     $(document).ready(function() {
                                         $('#internetTable').DataTable({
                                             "ajax": {
-                                                "url": "js/NC_Internet_Completed.json",  // Path to your JSON file
-                                                "dataSrc": ""  // Default, if your JSON file is an array of objects
+                                                "url": "js/NC_Internet_Completed.json",
+                                                "dataSrc": ""
                                             },
                                             "scrollX": true,
                                             "paging": true,
                                             "searching": true,
-                                            "ordering": true,  // Path to the JSON file
+                                            "ordering": true,
                                             "columns": [
                                                 { "data": "monthOfInterview" },
                                                 { "data": "yearOfInterview" },
@@ -456,22 +511,48 @@
                     </div>
                 </div>
             </div>
-            <!-- https://datatables.net/examples/basic_init/zero_configuration.html -->
-             <br>
-             <br>
-
+                <div class="tab-pane fade" id="nav-tab-x-content" role="tabpanel" aria-labelledby="nav-tab-x">
+                    <div class="tab-content-charts">
+                        <h1 class="font-weight-bold">New Chart</h1>
+                    </div>
+                </div>
         </div>
+        <!-- CHARTS END -->
+        <!-- R Sidebar -->
         <div class="col-md-1">
-            <ul class="align-list-right">
-                <li><i class="bi bi-three-dots"></i></li>
-                <li><i class="bi bi-speedometer"></i></li>
-                <li><i class="bi bi-clipboard-data"></i></li>
-                <li><i class="bi bi-check2-square"></i></li>
-                <li><i class="bi bi-bounding-box"></i></li>
-                <li><i class="bi bi-funnel"></i></li>
-                <li><i class="bi bi-bar-chart"></i></li>
-            </ul>
+            <div class="d-flex justify-content-end">
+                <!-- Sidebars modified from Bootstrap Documentation https://getbootstrap.com/docs/5.0/examples/sidebars/# -->
+                <div class="text-center d-none d-sm-block" style="width: 3rem; background-color: rgb(248 249 251);">
+                    <ul class="nav nav-pills nav-flush flex-column text-center sidebar" style="background-color: rgb(248 249 251);">
+                      <li class="border-bottom">
+                        <i class="bi bi-three-dots"></i>
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-speedometer"></i><br>Options
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-down" viewBox="0 0 16 16">
+                            <path d="M12.5 9a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7m.354 5.854 1.5-1.5a.5.5 0 0 0-.708-.708l-.646.647V10.5a.5.5 0 0 0-1 0v2.793l-.646-.647a.5.5 0 0 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0"/>
+                            <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
+                        </svg><br>Roles
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-check2-square"></i><br>Actions
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-bounding-box"></i><br>Rules
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-funnel"></i><br>Filters
+                      </li>
+                      <li class="py-3 border-bottom">
+                        <i class="bi bi-bar-chart"></i><br>Ranks
+                      </li>
+                    </ul>
+                  </div>
+            </div>
         </div>
+        <!-- R Sidebar END -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -480,414 +561,5 @@
     <script type="text/javascript" src="https://unpkg.com/chartjs-chart-geo@3.5.2/build/index.umd.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="js/scripts.js"></script>
-    <script>
-// Chart 1
-        const chart1 = document.getElementById('chart1');
-        const chart2 = document.getElementById('chart2');
-        const chart3 = document.getElementById('chart3');
-
-        fetch('js/NC_Internet_Completed.json') // Adjust the path as needed
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(jsonData => {
-            const datasets = [];
-
-            const concernData2 = jsonData.filter(item => item.onlineSecurityConcern1 == 1)
-            .map(item => ({
-                x: item.county,             // Ensure county exists
-                y: item.Age ? item.Age : NaN  // Check for the 'Age' field (case-sensitive)
-            }));
-
-        // Log the concern data to ensure it's being filtered correctly
-        /*console.log("Filtered and mapped concernData:", concernData2);*/
-
-    // Loop through Online Security Concerns (1-5)
-    for (let i = 1; i <= 5; i++) {
-        const concernKey = `onlineSecurityConcern${i}`;
-        const concernData = jsonData.filter(item => Number(item[concernKey]) === 1) // Make sure we cast to number
-            .map(item => ({
-                x: item.county,  // Use county as x-axis value
-                y: item.Age      // Use age as y-axis value
-            }));
-
-    /*console.log(`Concern ${i} data:`, concernData);  // Log data to debug*/
-
-    if (concernData2.length > 0) {
-        datasets.push({
-            label: `Security Concern ${i}`,
-            data: concernData,  // Include only items with "1" for this concern
-            backgroundColor: `rgba(${i * 40}, ${i * 50}, 255, 0.6)`, // Unique color for each concern
-            borderColor: `rgba(${i * 40}, ${i * 50}, 255, 1)`,
-            borderWidth: 1
-        });
-    } else {
-        console.log(`No data for Security Concern ${i}`);
-    }
-}
-
-// Loop through Online Concerns (1-6)
-for (let i = 1; i <= 6; i++) {
-    const concernKey = `onlineConcerns${i}`;
-    const concernData = jsonData.filter(item => Number(item[concernKey]) === 1) // Ensure comparison with numbers
-        .map(item => ({
-            x: item.county,  // Use county as x-axis value
-            y: item.Age      // Use age as y-axis value
-        }));
-
-    /*console.log(`Online Concern ${i} data:`, concernData);*/  // Log data to debug
-
-    if (concernData.length > 0) {
-        datasets.push({
-            label: `Online Concern ${i}`,
-            data: concernData,  // Include only items with "1" for this concern
-            backgroundColor: `rgba(${i * 50}, ${i * 30}, 150, 0.6)`, // Unique color for each concern
-            borderColor: `rgba(${i * 50}, ${i * 30}, 150, 1)`,
-            borderWidth: 1
-        });
-    } else {
-        console.log(`No data for Online Concern ${i}`);
-    }
-}
-
-const concernData = jsonData.filter(item => item.onlineSecurityConcern1 == 1)  // Just check one category
-    .map(item => ({
-        x: item.county,
-        y: item.Age
-    }));
-
-/*console.log(concernData);*/  // Check if we get data points for the concern
-
-// Define the mapping of county numbers to county names
-const countyLabels = {
-    0: 'Other',
-    1: 'Alamance',
-    21: 'Buncombe',
-    57: 'Davidson',
-    67: 'Forsyth',
-    119: 'Mecklenburg',
-    133: 'Onslow',
-    147: 'Pitt',
-    155: 'Robeson*',
-    159: 'Rowan',
-    179: 'Union',
-    191: 'Wayne'
-};
-
-// Assuming `jsonData` is the array of data points, e.g., from the JSON
-const labels2 = jsonData.map(item => {
-    // Get the label from the countyLabels object if it exists
-    const countyLabel = countyLabels[item.county];
-    // If no custom label exists, use the default label
-    return countyLabel || `Income Group ${item.county}`;
-});
-
-/*console.log(labels2);*/  // Check the labels array
-
-// Now initialize the Chart.js chart with the datasets
-new Chart(chart1, {
-    type: 'scatter', // Scatter plot
-    data: {
-        datasets: datasets // Use the datasets array with multiple concerns
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-        },
-        scales: {
-            x: {
-                type: 'linear',  // X-axis is linear scale
-                labels: labels2,
-                position: 'bottom',
-                title: {
-                    display: true,
-                    text: 'County'  // x-axis title
-                },
-                ticks: {
-                    stepSize: 1,
-                }
-            },
-            y: {
-                type: 'linear',  // Y-axis is linear scale (for age values)
-                position: 'left',
-                title: {
-                    display: true,
-                    text: 'Age'  // y-axis title
-                }
-            }
-        }
-    }
-});
-
-// CHART 2
-    // Step 1: Group data by familyIncome
-    const incomeGroups = jsonData.reduce((acc, item) => {
-        if (!acc[item.familyIncome]) {
-            acc[item.familyIncome] = [];
-        }
-        acc[item.familyIncome].push(item);
-        return acc;
-    }, {});
-
-    /*console.log('Income Groups:', incomeGroups);*/ // Check if groups are created correctly
-
-    // Step 2: Count how many times "1" appears for each device per income group
-    const countOnesByIncome = Object.keys(incomeGroups).map(familyIncome => {
-        const group = incomeGroups[familyIncome];
-        
-        // Check if we have data for this income group
-        /*console.log(`Processing group for familyIncome ${familyIncome}:`, group);*/
-
-        // Count how many times "1" appears for each device type in the group
-        const countLaptopOnes = group.filter(item => item.laptopUsage === 1).length;
-        const countDesktopOnes = group.filter(item => item.desktopUsage === 1).length;
-        const countTabletOnes = group.filter(item => item.tabletUsage === 1).length;
-        const countWatchOnes = group.filter(item => item.smartWatch === 1).length;
-        const countTVOnes = group.filter(item => item.smartTV === 1).length;
-        const countPhoneOnes = group.filter(item => item.phoneDataPlan === 1).length;
-
-        /*console.log(`Counts for familyIncome ${familyIncome}:`, {
-            countLaptopOnes,
-            countDesktopOnes,
-            countTabletOnes,
-            countWatchOnes,
-            countTVOnes, 
-            countPhoneOnes
-        });*/
-
-        return {
-            familyIncome: familyIncome,
-            countLaptopOnes: countLaptopOnes,
-            countDesktopOnes: countDesktopOnes,
-            countTabletOnes: countTabletOnes,
-            countWatchOnes: countWatchOnes,
-            countTVOnes: countTVOnes,
-            countPhoneOnes: countPhoneOnes
-        };
-    });
-
-    /*console.log('Count Ones by Income:', countOnesByIncome);*/ // Check if counts are calculated properly
-
-    // Step 3: Prepare labels and data for Chart.js
-    const incomeRangeMap = {
-        1: '$0 - 5000',
-        2: '$5000 - 7000',
-        3: '$7,500 TO 9,999',
-        4: '$10,000 TO 12,499',
-        5: '$12,500 TO 14,999',
-        6: '$15,000 TO 19,999',
-        7: '$20,000 TO 24,999',
-        8: '$25,000 TO 29,999',
-        9: '$30,000 TO 34,999',
-        10: '$35,000 TO 39,999',
-        11: '$40,000 TO 49,999',
-        12: '$50,000 TO 59,999',
-        13: '$60,000 TO 74,999',
-        14: '$75,000 TO 99,999',
-        15: '$100,000 TO 149,999',
-        16: '$150,000 OR MORE'
-    };
-
-    const labels = countOnesByIncome.map(item => {
-        const incomeRange = incomeRangeMap[item.familyIncome];
-        return incomeRange || `Income Group ${item.familyIncome}`;
-    });
-
-    // Data arrays for each device type (count of "1"s)
-    const laptopData = countOnesByIncome.map(item => item.countLaptopOnes);
-    const desktopData = countOnesByIncome.map(item => item.countDesktopOnes);
-    const tabletData = countOnesByIncome.map(item => item.countTabletOnes);
-    const watchData = countOnesByIncome.map(item => item.countWatchOnes);
-    const tvData = countOnesByIncome.map(item => item.countTVOnes);
-    const phoneData = countOnesByIncome.map(item => item.countPhoneOnes);
-
-    // Debugging: Log the data to check for correctness 
-    /*
-    console.log('Labels:', labels);
-    console.log('Laptop Data:', laptopData);
-    console.log('Desktop Data:', desktopData);
-    console.log('Tablet Data:', tabletData);
-    console.log('Watch Data:', watchData);
-    console.log('TV Data:', tvData);
-    console.log('Phone Data:', phoneData);*/
-
-    // Step 4: Initialize Chart.js with the data
-    const chart2 = document.getElementById('chart2').getContext('2d');
-    new Chart(chart2, {
-        type: 'bar',
-        data: {
-            labels: labels, // Income group labels
-            datasets: [
-                {
-                    label: 'Phone Usage',
-                    data: phoneData,
-                    borderWidth: 1
-                },
-                {
-                    label: 'Laptop Usage',
-                    data: laptopData,
-                    borderWidth: 1
-                },
-                {
-                    label: 'Desktop Usage',
-                    data: desktopData,
-                    borderWidth: 1
-                },
-                {
-                    label: 'Tablet Usage',
-                    data: tabletData,
-                    borderWidth: 1
-                },
-                {
-                    label: 'Smart Watch Usage',
-                    data: watchData,
-                    borderWidth: 1
-                },
-                {
-                    label: 'Smart TV Usage',
-                    data: tvData,
-                    borderWidth: 1
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                display: true,
-                text: 'Internet access by device per family income'
-                },
-                legend: {
-                    position: 'top',
-                },
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Family Income per Year'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Num Responses'
-                    },
-                    beginAtZero: true,
-                    ticks: {
-                        min: 0
-                    }
-                }
-            }
-        }
-    });
-    
-    const targetColumns = [
-    "emailOnline", 
-    "textingMessagingOnline", 
-    "socialMediaOnline", 
-    "gamingOnline",
-    "conferencesCallOnline",
-    "watchVideoOnline",
-    "listenAudioOnline",
-    "contentCreationOnline",
-    "workFromHome",
-    "jobSearchOnline",
-    "jobTrainingOnline",
-    "governmentServicesOnline",
-    "requestingServicesOnline",
-    "sellingServicesOnline",
-    "shoppingOnline",
-    "sellingItemsOnline",
-    "paymentBankingOnline",
-    "digitalVoiceAssistantOnline",
-    "iotOnline",
-    "healthRecordsOnline",
-    "healthCommunicationOnline",
-    "healthResearchOnline",
-    "electronicHealthMonitoringOnline"
-];
-
-// Step 1: Count the "Yes" (1) and "No" (2) responses for each category
-const categoryCounts = targetColumns.reduce((acc, category) => {
-    acc[category] = { yes: 0, no: 0 }; // Initialize counts for each category
-    jsonData.forEach(item => {
-        if (item[category] === 1) {
-            acc[category].yes += 1; // Increment the "Yes" count
-        } else if (item[category] === 2) {
-            acc[category].no += 1; // Increment the "No" count
-        }
-    });
-    return acc;
-}, {});
-
-// Step 2: Prepare the data and normalize it to ensure each category is 100%
-const categories = Object.keys(categoryCounts);  // Labels for the X-axis (categories)
-const yesPercentages = categories.map(category => {
-    const yes = categoryCounts[category].yes;
-    const total = yes + categoryCounts[category].no; // Calculate total responses
-    return total > 0 ? (yes / total) * 100 : 0;  // Normalize Yes percentage (out of 100%)
-});
-
-const noPercentages = categories.map(category => {
-    const no = categoryCounts[category].no;
-    const total = no + categoryCounts[category].yes; // Calculate total responses
-    return total > 0 ? (no / total) * 100 : 0;  // Normalize No percentage (out of 100%)
-});
-
-// Step 3: Prepare data for Chart.js
-new Chart(chart3, {
-    type: 'bar',
-    data: {
-        labels: categories,  // X-axis labels (categories)
-        datasets: [{
-            label: 'Yes',
-            data: yesPercentages  // Y-axis data (normalized percentage of Yes responses)
-        },
-        {
-            label: 'No',
-            data: noPercentages  // Y-axis data (normalized percentage of No responses)
-        }]
-    },
-    options: {
-        indexAxis: 'y',  // Horizontal bars
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'How people are spending their time on the internet'
-            }
-        },
-        interaction: {
-            intersect: false
-        },
-        scales: {
-            x: {
-                stacked: true,  // Stack the "Yes" and "No" bars together
-                title: {
-                    display: true,
-                    text: 'Percentage of Total Responses'
-                },
-                ticks: {
-                    beginAtZero: true,
-                    max: 100  // Set the max value to 100 so each row represents 100%
-                }
-            },
-            y: {
-                stacked: true,  // Stack the "Yes" and "No" bars together
-            }
-        }
-    }
-});
-
-})
-    .catch(error => console.error('Error loading the JSON data:', error));
-    </script>
 </body>
 </html>
